@@ -52,8 +52,8 @@ client.indices.exists({
                 "Fonte": Fonte,
                 "UUID": UUID,
                 "URL": URL,
-                "Secção": {Original: Secção, Show: Secção, Index: Secção},
-                "Área": {Original: Área, Show: Área, Index: Área},
+                "Secção": {Original: [Secção], Show: [Secção], Index: [Secção]},
+                "Área": {Original: [Área], Show: [Área], Index: [Área]},
                 "Relator Nome Completo": {Original: [relComp], Show: [relComp], Index: [relComp]},
                 "Relator Nome Profissional": {Original: [relProf], Show: [relProf], Index: [relProf]},
                 
