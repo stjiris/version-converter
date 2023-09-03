@@ -1,4 +1,4 @@
-import { PACKAGE_NAMES } from "./create";
+import { PACKAGE_NAMES } from "../create";
 
 type Version = {
     JurisprudenciaVersion: string;

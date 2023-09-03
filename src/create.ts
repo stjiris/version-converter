@@ -1,7 +1,7 @@
 import { MappingProperty } from "@elastic/elasticsearch/lib/api/types";
 import { argv, argv0 } from "process";
 import { client } from "./util/client";
-import {getVersion, getVersions} from "./Version"
+import {getVersion, getVersions} from "./util/Version"
 
 export let PACKAGE_NAMES = [
     "jurisprudencia-document-9",
