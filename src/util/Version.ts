@@ -2,7 +2,7 @@ import { PACKAGE_NAMES } from "../create";
 
 type Version = {
     JurisprudenciaVersion: string;
-    JurisprudenciaProperties: Record<string, any>;
+    JurisprudenciaDocumentProperties: Record<string, any>;
 };
 
 export async function getVersions(): Promise<Version[]> {

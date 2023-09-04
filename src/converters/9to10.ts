@@ -1,7 +1,7 @@
 import { JurisprudenciaDocument as JurisprudenciaDocument10, JurisprudenciaVersion as JurisprudenciaVersion10  } from "jurisprudencia-document-10-alpha";
 import { ExactTypedJurisprudenciaDocument as JurisprudenciaDocument9, JurisprudenciaDocumentArrayKey, JurisprudenciaDocumentKey, JurisprudenciaVersion as JurisprudenciaVersion9 } from "jurisprudencia-document-9";
-import { BulkUpdate } from "./util/bulk";
-import { client } from "./util/client";
+import { BulkUpdate } from "../util/bulk";
+import { client } from "../util/client";
 
 function joinRemovingNoValue(array: string | string[], toRemove: string){
     return Array.isArray(array) ? array.filter( s => s !== toRemove) : array === toRemove ? [] : [array];
@@ -24,12 +24,6 @@ client.indices.exists({
         throw new Error(`${JurisprudenciaVersion10} index must exists`)
     }
 }).then(async () => {
-    await client.indices.putSettings({
-        index: JurisprudenciaVersion10,
-        settings: {
-            refresh_interval: -1
-        }
-    })
     let bulk = new BulkUpdate<JurisprudenciaDocument10>(client, JurisprudenciaVersion10);
     let r = await client.search<JurisprudenciaDocument9>({
         index: JurisprudenciaVersion9,
@@ -84,10 +78,4 @@ client.indices.exists({
         r = await client.scroll({scroll: "1m", scroll_id: r._scroll_id})
     }
     await bulk.close()
-    await client.indices.putSettings({
-        index: JurisprudenciaVersion10,
-        settings: {
-            refresh_interval: 0
-        }
-    })
 }).catch(e => console.error(e))

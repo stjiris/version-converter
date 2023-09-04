@@ -5,13 +5,23 @@ export class BulkUpdate<T = unknown> {
     client: Client;
     index: string;
     ops: (BulkOperationContainer | BulkUpdateAction<T,Partial<T>> | T)[];
-    limit: number
+    limit: number;
+    ready: Promise<boolean>;
 
     constructor(client: Client, index: string, limit?: number){
         this.client = client;
         this.index = index;
         this.ops = [];
         this.limit = limit || 500
+        this.ready = this.client.indices.putSettings({
+            index: this.index,
+            settings: {
+                refresh_interval: -1
+            }
+        }).then( _ => true ).catch( e => {
+            console.error(e);
+            return false;
+        })
     }
 
     create(id: string, doc: T){
@@ -31,13 +41,20 @@ export class BulkUpdate<T = unknown> {
     }
 
     async close(){
-        if(this.ops.length <= 0 ) return;
-
-        return this.request();
+        if(this.ops.length > 0 ) await this.request();
+        
+        await this.client.indices.putSettings({
+            index: this.index,
+            settings: {
+                // @ts-ignore 2769 null is a valid value to reset the value
+                refresh_interval: null
+            }
+        })
     }
 
     async request(){
-        console.error(`Requesting ${this.ops.length}`)
+        if( !(await this.ready) ) throw new Error("Could not freeze index"); 
+        console.error(`Requesting ${this.ops.length/2}`)
         let sdate = new Date()
         return await this.client.bulk<T,Partial<T>>({
             index: this.index,

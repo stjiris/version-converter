@@ -58,7 +58,7 @@ async function main(){
             index: version.JurisprudenciaVersion,
             mappings: {
                 dynamic_date_formats: ['dd/MM/yyyy'],
-                properties: version.JurisprudenciaProperties as Record<string, MappingProperty>
+                properties: version.JurisprudenciaDocumentProperties as Record<string, MappingProperty>
             },
             settings: {
                 analysis: {
