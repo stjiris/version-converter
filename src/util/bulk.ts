@@ -76,7 +76,9 @@ export class BulkUpdate<T = unknown> {
             let edate = new Date()
             console.error(`Took ${(+edate) - (+sdate)}ms to update ${r.items.length} (errors: ${r.errors})`)
             if(r.errors){
-                console.error(r.items.filter(o => o.create?.error || o.update?.error || o.delete?.error || o.index?.error).map(o => o.create?.error))
+                console.error(r.items
+                    .filter(o => o.create?.error || o.update?.error || o.delete?.error || o.index?.error)
+                    .map(o => o.create?.error || o.update?.error || o.delete?.error || o.index?.error))
             }
             this.ops = []
         })
