@@ -33,7 +33,7 @@ client.indices.exists({
     });
     while( r.hits.hits.length > 0 ){
         for( let hit of r.hits.hits ){
-            let {Original: {"": _, Original}, CONTENT, HASH, Data, Sumário, Texto, "Número de Processo": num, ECLI, Fonte, UUID, URL, "Relator Nome Completo": relComp, "Relator Nome Profissional": relProf, Secção, Área, ...rest} = hit._source!;
+            let {Original: {"": _, ...Original}, CONTENT, HASH, Data, Sumário, Texto, "Número de Processo": num, ECLI, Fonte, UUID, URL, "Relator Nome Completo": relComp, "Relator Nome Profissional": relProf, Secção, Área, ...rest} = hit._source!;
             let newDocumentVersion: JurisprudenciaDocument10 = {
                 Original: Original,
                 CONTENT: CONTENT,
