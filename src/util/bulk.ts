@@ -43,6 +43,7 @@ export class BulkUpdate<T = unknown> {
         this.ops.push({
             doc: doc
         })
+        return this.sync();
     }
 
     async sync(){
