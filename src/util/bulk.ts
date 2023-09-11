@@ -34,6 +34,17 @@ export class BulkUpdate<T = unknown> {
         return this.sync()
     }
 
+    update(id: string, doc: T | Partial<T>){
+        this.ops.push({
+            update: {
+                _id: id   
+            }
+        })
+        this.ops.push({
+            doc: doc
+        })
+    }
+
     async sync(){
         if( this.ops.length <= this.limit ) return;
 
