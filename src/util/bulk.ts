@@ -1,12 +1,21 @@
 import { Client } from "@elastic/elasticsearch";
 import { BulkOperationContainer, BulkUpdateAction } from "@elastic/elasticsearch/lib/api/types";
 
+class PromiseQueue {
+    queue = Promise.resolve();
+    async add(fn: () => Promise<void>){
+        this.queue = this.queue.then(fn);
+        return this.queue;
+    }
+}
+
 export class BulkUpdate<T = unknown> {
     client: Client;
     index: string;
     ops: (BulkOperationContainer | BulkUpdateAction<T,Partial<T>> | T)[];
     limit: number;
     ready: Promise<boolean>;
+    queue: PromiseQueue;
 
     constructor(client: Client, index: string, limit?: number){
         this.client = client;
@@ -22,6 +31,7 @@ export class BulkUpdate<T = unknown> {
             console.error(e);
             return false;
         })
+        this.queue = new PromiseQueue();
     }
 
     create(id: string, doc: T){
@@ -46,7 +56,7 @@ export class BulkUpdate<T = unknown> {
         return this.sync();
     }
 
-    async sync(){
+    sync(){
         if( this.ops.length <= this.limit ) return;
 
         return this.request();
@@ -65,22 +75,25 @@ export class BulkUpdate<T = unknown> {
     }
 
     async request(){
-        if( !(await this.ready) ) throw new Error("Could not freeze index"); 
-        console.error(`Requesting ${this.ops.length/2}`)
-        let sdate = new Date()
-        return await this.client.bulk<T,Partial<T>>({
-            index: this.index,
-            refresh: "true",
-            operations: this.ops
-        }).then( r => {
-            let edate = new Date()
-            console.error(`Took ${(+edate) - (+sdate)}ms to update ${r.items.length} (errors: ${r.errors})`)
-            if(r.errors){
-                console.error(r.items
-                    .filter(o => o.create?.error || o.update?.error || o.delete?.error || o.index?.error)
-                    .map(o => o.create?.error || o.update?.error || o.delete?.error || o.index?.error))
-            }
-            this.ops = []
+        if( !(await this.ready) ) throw new Error("Could not freeze index");
+        console.log("Queing request")
+        let ops = this.ops;
+        this.queue.add(async () => {
+            console.error(`Requesting ${ops.length/2}`)
+            let sdate = new Date()
+            await this.client.bulk<T,Partial<T>>({
+                index: this.index,
+                operations: ops
+            }).then( r => {
+                let edate = new Date()
+                console.error(`Took ${(+edate) - (+sdate)}ms to update ${r.items.length} (errors: ${r.errors})`)
+                if(r.errors){
+                    console.error(r.items
+                        .filter(o => o.create?.error || o.update?.error || o.delete?.error || o.index?.error)
+                        .map(o => o.create?.error || o.update?.error || o.delete?.error || o.index?.error))
+                }
+            })
         })
+        this.ops = []
     }
 }

@@ -48,7 +48,7 @@ client.indices.exists({
 }).then(async exists => {
     if(!exists) throw new Error(`Indice: "${JurisprudenciaVersion}" doesn't exist`);
 
-    let bup = new BulkUpdate<JurisprudenciaDocument>(client, JurisprudenciaVersion);
+    let bup = new BulkUpdate<JurisprudenciaDocument>(client, JurisprudenciaVersion, 5000);
 
     let r = await client.search<JurisprudenciaDocument>({
         index: JurisprudenciaVersion,
@@ -61,7 +61,6 @@ client.indices.exists({
             let update: PartialJurisprudenciaDocument = {};
             for( let key of JurisprudenciaDocumentGenericKeys ){
                 let v = hit._source[key];
-                if(!v) continue;
                 if(!hit._source.Original) continue;
                 let oKey = keyToOriginal(key);
                 if(!oKey) continue;
@@ -75,8 +74,8 @@ client.indices.exists({
                 
                 update[key] = {
                     Original: oValue,
-                    Index: v.Index,
-                    Show: v.Show
+                    Index: v?.Index || [],
+                    Show: v?.Show || []
                 }
             }
             await bup.update(hit._id, update)
