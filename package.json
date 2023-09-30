@@ -14,10 +14,14 @@
     "@elastic/elasticsearch": "^8.9.0",
     "@types/elasticsearch": "^5.0.40",
     "@types/node": "^20.4.5",
-    "jurisprudencia-document-11-with-tipo": "npm:@stjiris/jurisprudencia-document@^11.0.1",
-    "jurisprudencia-document-11": "npm:@stjiris/jurisprudencia-document@^11.0.0",
+    "jsdom": "^22.1.0",
     "jurisprudencia-document-10-alpha": "npm:@stjiris/jurisprudencia-document@^10.0.1",
+    "jurisprudencia-document-11": "npm:@stjiris/jurisprudencia-document@^11.0.0",
+    "jurisprudencia-document-11-with-tipo": "npm:@stjiris/jurisprudencia-document@^11.0.1",
     "jurisprudencia-document-9": "npm:@stjiris/jurisprudencia-document@9.4",
     "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.3"
   }
 }

@@ -24,7 +24,7 @@ client.indices.exists({
                 let v = hit._source[key as JurisprudenciaDocumentKey];
                 if(v === null) continue;
                 else if(typeof v === "string"){
-                    if( await isEmptyString(v) ){
+                    if( await isEmptyString([v]) ){
                         toDel[key as JurisprudenciaDocumentKey] = null
                     }
                 }
@@ -49,28 +49,19 @@ client.indices.exists({
 });
 
 async function isEmptyGenericField(obj: GenericField){
-    let r = true;
-    for( let v of obj.Index ){
-        r &&= await isEmptyString(v);
-        if( !r ) break
-    }
-    for( let v of obj.Show ){
-        r &&= await isEmptyString(v);
-        if( !r ) break
-    }
-    return r;
+    return isEmptyString(obj.Index) && isEmptyString(obj.Show);
 }
 
-function isEmptyString(text: string){
-    let trimed = text.trim();
-    return trimed.trim().length === 0 || trimed.trim().startsWith("«sem") || isHTMLEmpty(trimed)
+function isEmptyString(texts: string[]){
+    let trimed = texts.map(t => t.trim());
+    return trimed.every(t => t.length === 0 || t.startsWith("«sem")) || isHTMLEmpty(trimed)
 }
 
-function isHTMLEmpty(text: string){
+function isHTMLEmpty(texts: string[]){
     return client.indices.analyze({
         tokenizer: "keyword",
         char_filter: ["html_strip"],
         filter: ["trim"],
-        text: text
+        text: texts
     }).then(r => r.tokens ? r.tokens.every(t => t.token.length === 0) : false)
 }
