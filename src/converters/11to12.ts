@@ -8,13 +8,13 @@ Promise.all([
     client.indices.exists({index: JurisprudenciaVersion12}).catch(e => false)
 ]).then(async ([existsV11,existsV12]) => {
     if( !existsV11 || !existsV12 ) throw new Error(`All indexes must exist. (${JurisprudenciaVersion11WithTipo}: ${existsV11}, ${JurisprudenciaVersion12}: ${existsV12})`);
-    // Add state field with active string
+    // Add state field with público string
     let {task: taskId} = await client.reindex({
         source: {index: JurisprudenciaVersion11WithTipo},
         dest: {index: JurisprudenciaVersion12},
         script: {
             source: `
-                ctx._source.STATE = "active";
+                ctx._source.STATE = "público";
             `
         },
         wait_for_completion: false
