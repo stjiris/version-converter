@@ -7,7 +7,8 @@ export let PACKAGE_NAMES = [
     "jurisprudencia-document-9",
     "jurisprudencia-document-10-alpha",
     "jurisprudencia-document-11",
-    "jurisprudencia-document-11-with-tipo"
+    "jurisprudencia-document-11-with-tipo",
+    "jurisprudencia-document-12"
 ]
 
 let DELETE_INDEX = argv.includes("--delete");
