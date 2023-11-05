@@ -33,7 +33,8 @@ client.indices.exists({index: JurisprudenciaVersion}).then(async exists => {
             // if any hash is different, update
             if( newUUID !== obj.UUID || newHash.Original !== obj.HASH?.Original || newHash.Processo !== obj.HASH?.Processo || newHash.Sumário !== obj.HASH?.Sumário || newHash.Texto !== obj.HASH?.Texto ){
                 await bk.update(hit._id, {
-                    HASH: newHash
+                    HASH: newHash,
+                    UUID: newUUID
                 })
                 updates++;
             }
