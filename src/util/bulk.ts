@@ -78,7 +78,7 @@ export class BulkUpdate<T = unknown> {
         if( !(await this.ready) ) throw new Error("Could not freeze index");
         console.log("Queing request")
         let ops = this.ops;
-        this.queue.add(async () => {
+        await this.queue.add(async () => {
             console.error(`Requesting ${ops.length/2}`)
             let sdate = new Date()
             await this.client.bulk<T,Partial<T>>({
