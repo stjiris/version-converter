@@ -20,8 +20,8 @@ async function showHelp(code: number, error?: string){
 }
 
 async function main(){
-    if( argv.length <= 2 || argv.length > 3 ) await showHelp(1);
-    await execConverter(argv[2]);
+    if( argv.length <= 2 ) await showHelp(1);
+    await execConverter(argv[2], argv.slice(3));
 }
 
 async function getConverters(){
@@ -29,10 +29,10 @@ async function getConverters(){
     return convs.filter(c => c.endsWith(".js")).map(c => c.replace(".js",""))
 }
 
-async function execConverter(conv: string){
+async function execConverter(conv: string, args: string[]){
     let file = join(__dirname,"converters", conv+".js");
     return new Promise(resolve => {
-        let proc = fork(file)
+        let proc = fork(file, args)
         proc.on("error", e => console.error(e));
         proc.on("exit", resolve)
     });
