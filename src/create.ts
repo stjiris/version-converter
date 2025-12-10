@@ -1,22 +1,23 @@
 import { MappingProperty } from "@elastic/elasticsearch/lib/api/types";
 import { argv, argv0 } from "process";
 import { client } from "./util/client";
-import {getVersion, getVersions} from "./util/Version"
+import { getVersion, getVersions } from "./util/Version"
 
 export let PACKAGE_NAMES = [
     "jurisprudencia-document-9",
     "jurisprudencia-document-10-alpha",
     "jurisprudencia-document-11",
     "jurisprudencia-document-11-with-tipo",
-    "jurisprudencia-document-12"
+    "jurisprudencia-document-12",
+    "jurisprudencia-document-13"
 ]
 
 let DELETE_INDEX = argv.includes("--delete");
 
 let HELP = argv.includes("--help");
 
-async function showHelp(code: number, error?: string){
-    if( error ){
+async function showHelp(code: number, error?: string) {
+    if (error) {
         process.stderr.write(error);
         process.stderr.write("\n");
     }
@@ -36,24 +37,24 @@ async function showHelp(code: number, error?: string){
     process.exit(code);
 }
 
-async function main(){
-    if( HELP ) return await showHelp(0)
+async function main() {
+    if (HELP) return await showHelp(0)
     let versions = argv.filter(arg => arg.startsWith("jurisprudencia."));
-    if( versions.length == 0 || versions.length > 1 ) return await showHelp(1, "ERROR: Select exacly ONE of the available index values\n");
+    if (versions.length == 0 || versions.length > 1) return await showHelp(1, "ERROR: Select exacly ONE of the available index values\n");
     let v = await getVersion(versions[0]);
-    if( !v ) return await showHelp(1, `ERROR: Unable to use index "${versions[0]}"\n`);
+    if (!v) return await showHelp(1, `ERROR: Unable to use index "${versions[0]}"\n`);
     let version = v;
-    client.indices.exists({index: version.JurisprudenciaVersion}).then( async exists => {
-        if(exists && !DELETE_INDEX){
+    client.indices.exists({ index: version.JurisprudenciaVersion }).then(async exists => {
+        if (exists && !DELETE_INDEX) {
             process.stdout.write(`Index "${version.JurisprudenciaVersion}" already exists.\n`)
-            let stats = await client.indices.stats({index: version.JurisprudenciaVersion});
+            let stats = await client.indices.stats({ index: version.JurisprudenciaVersion });
             process.stdout.write(`Status:    \t${stats.indices ? stats.indices[version.JurisprudenciaVersion].health : "n.a."}\n`)
             process.stdout.write(`Total docs:\t${stats.indices ? stats.indices[version.JurisprudenciaVersion].total?.docs?.count : "n.a."}\n`)
             return;
         }
-        if( exists && DELETE_INDEX ){
+        if (exists && DELETE_INDEX) {
             process.stdout.write(`Deleting current indice "${version.JurisprudenciaVersion}".\n`)
-            let r = await client.indices.delete({index: version.JurisprudenciaVersion});
+            let r = await client.indices.delete({ index: version.JurisprudenciaVersion });
             process.stdout.write(`Result:    \t${r.acknowledged}\n`);
         }
         let r = await client.indices.create({
@@ -93,7 +94,7 @@ async function main(){
         })
         process.stdout.write(`Created ${r.index} with result: ${r.acknowledged}.\n`);
     }).catch(e => showHelp(2, `ERROR: ${e.name}\n`))
-    
+
 }
 
 main().catch(e => console.error(e))
