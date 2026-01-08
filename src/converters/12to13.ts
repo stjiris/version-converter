@@ -1,22 +1,17 @@
-import { JurisprudenciaVersion as JurisprudenciaVersion11WithTipo } from "jurisprudencia-document-11-with-tipo"
 import { JurisprudenciaVersion as JurisprudenciaVersion12 } from "jurisprudencia-document-12"
+import { JurisprudenciaVersion as JurisprudenciaVersion13 } from "jurisprudencia-document-13"
 import { client } from "../util/client"
 import { waitTask } from "../util/wait-task";
 
 Promise.all([
-    client.indices.exists({ index: JurisprudenciaVersion11WithTipo }).catch(e => false),
-    client.indices.exists({ index: JurisprudenciaVersion12 }).catch(e => false)
-]).then(async ([existsV11, existsV12]) => {
-    if (!existsV11 || !existsV12) throw new Error(`All indexes must exist. (${JurisprudenciaVersion11WithTipo}: ${existsV11}, ${JurisprudenciaVersion12}: ${existsV12})`);
+    client.indices.exists({ index: JurisprudenciaVersion12 }).catch(() => false),
+    client.indices.exists({ index: JurisprudenciaVersion13 }).catch(() => false)
+]).then(async ([existsV12, existsV13]) => {
+    if (!existsV12 || !existsV13) throw new Error(`All indexes must exist. (${JurisprudenciaVersion12}: ${existsV12}, ${JurisprudenciaVersion13}: ${existsV13})`);
     // Add empty source path
     let { task: taskId } = await client.reindex({
-        source: { index: JurisprudenciaVersion11WithTipo },
-        dest: { index: JurisprudenciaVersion12 },
-        script: {
-            source: `
-                ctx._source.PATH = "";
-            `
-        },
+        source: { index: JurisprudenciaVersion12 },
+        dest: { index: JurisprudenciaVersion13 },
         wait_for_completion: false
     });
 
