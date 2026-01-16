@@ -8,7 +8,7 @@ Promise.all([
     client.indices.exists({ index: JurisprudenciaVersion13 }).catch(() => false)
 ]).then(async ([existsV12, existsV13]) => {
     if (!existsV12 || !existsV13) throw new Error(`All indexes must exist. (${JurisprudenciaVersion12}: ${existsV12}, ${JurisprudenciaVersion13}: ${existsV13})`);
-    // Add empty source path
+
     let { task: taskId } = await client.reindex({
         source: { index: JurisprudenciaVersion12 },
         dest: { index: JurisprudenciaVersion13 },
