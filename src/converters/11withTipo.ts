@@ -1,15 +1,15 @@
-import { JurisprudenciaDocument as JurisprudenciaDocument11, JurisprudenciaVersion as JurisprudenciaVersion11  } from "jurisprudencia-document-11";
-import { JurisprudenciaDocument as JurisprudenciaDocument11WithTipo, JurisprudenciaVersion as JurisprudenciaVersion11WithTipo  } from "jurisprudencia-document-11-with-tipo";
+import { JurisprudenciaDocument as JurisprudenciaDocument11, JurisprudenciaVersion as JurisprudenciaVersion11 } from "jurisprudencia-document-11";
+import { JurisprudenciaDocument as JurisprudenciaDocument11WithTipo, JurisprudenciaVersion as JurisprudenciaVersion11WithTipo } from "jurisprudencia-document-11-with-tipo";
 import { BulkUpdate } from "../util/bulk";
 import { client } from "../util/client";
 import { JurisprudenciaVersion } from "jurisprudencia-document-11";
 import { resolve } from "path";
 
 Promise.all([
-    client.indices.exists({index: JurisprudenciaVersion11}).catch(e => false),
-    client.indices.exists({index: JurisprudenciaVersion11WithTipo}).catch(e => false)
-]).then(async ([existsV11,existsV11WithTipo]) => {
-    if( !existsV11 || !existsV11WithTipo ) throw new Error(`All indexes must exist. (${JurisprudenciaVersion11}: ${existsV11}, ${JurisprudenciaVersion11WithTipo}: ${existsV11WithTipo})`)
+    client.indices.exists({ index: JurisprudenciaVersion11 }).catch(() => false),
+    client.indices.exists({ index: JurisprudenciaVersion11WithTipo }).catch(() => false)
+]).then(async ([existsV11, existsV11WithTipo]) => {
+    if (!existsV11 || !existsV11WithTipo) throw new Error(`All indexes must exist. (${JurisprudenciaVersion11}: ${existsV11}, ${JurisprudenciaVersion11WithTipo}: ${existsV11WithTipo})`)
     /*
     let r = await client.search<JurisprudenciaDocument11>({
         index: JurisprudenciaVersion,
@@ -48,9 +48,9 @@ Promise.all([
     //     'Data do Acordão+Data de decisão sumária': 1,
     //     Data: 2
     // }
-    let {task: taskId} = await client.reindex({
-        source: {index: JurisprudenciaVersion11},
-        dest: {index: JurisprudenciaVersion11WithTipo},
+    let { task: taskId } = await client.reindex({
+        source: { index: JurisprudenciaVersion11 },
+        dest: { index: JurisprudenciaVersion11WithTipo },
         script: {
             source: `
                 def decSuma = ctx['_source']['Original'].containsKey("Data da Decisão Sumária") || ctx['_source']['Original'].containsKey("Data de decisão sumária");
@@ -61,18 +61,18 @@ Promise.all([
         },
         wait_for_completion: false
     });
-    let task = await client.tasks.get({task_id: taskId! as string})
-    while(!task.completed){
-        let {created, updated, deleted, total} = task.task.status!;
-        let sum = created+updated+deleted
-        console.log(`${sum} / ${total} (${Math.floor(1000*sum / total)/10}%)`)
+    let task = await client.tasks.get({ task_id: taskId! as string })
+    while (!task.completed) {
+        let { created, updated, deleted, total } = task.task.status!;
+        let sum = created + updated + deleted
+        console.log(`${sum} / ${total} (${Math.floor(1000 * sum / total) / 10}%)`)
         await sleep(7.5);
-        task = await client.tasks.get({task_id: taskId! as string})
+        task = await client.tasks.get({ task_id: taskId! as string })
     }
 }).catch(e => console.error(e))
 
 
-function sleep(s: number){
+function sleep(s: number) {
     return new Promise(resolve => {
         setTimeout(resolve, s * 1000)
     })

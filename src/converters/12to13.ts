@@ -31,7 +31,8 @@ async function reindexWithUuid(batchSize = 500) {
 
         for (const hit of hits) {
             const src: JurisprudenciaDocument = hit._source || {};
-
+            if (!src)
+                continue;
             const docForHash = {
                 Original: src.Original ?? {},
                 "Número de Processo": src["Número de Processo"] ?? "",

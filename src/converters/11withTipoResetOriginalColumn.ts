@@ -3,7 +3,7 @@ import { client } from "../util/client";
 import { BulkUpdate } from "../util/bulk";
 import { JSDOM } from "jsdom";
 
-function keyToOriginal(key: JurisprudenciaDocumentKey){
+function keyToOriginal(key: JurisprudenciaDocumentKey) {
     let keyToOriginalMap: Record<JurisprudenciaDocumentKey, string[] | string | null> = {
         "Relator Nome Completo": "Relator",
         "Relator Nome Profissional": "Relator",
@@ -38,15 +38,16 @@ function keyToOriginal(key: JurisprudenciaDocumentKey){
         "URL": null,
         "UUID": null,
         "Tipo": null,
-        "Jurisprudência": null
+        "Jurisprudência": null,
+        STATE: null
     }
     return keyToOriginalMap[key];
 }
 
 client.indices.exists({
     index: JurisprudenciaVersion
-}).then(async exists => {
-    if(!exists) throw new Error(`Indice: "${JurisprudenciaVersion}" doesn't exist`);
+}).then(async (exists: any) => {
+    if (!exists) throw new Error(`Indice: "${JurisprudenciaVersion}" doesn't exist`);
 
     let bup = new BulkUpdate<JurisprudenciaDocument>(client, JurisprudenciaVersion, 5000);
 
@@ -55,23 +56,23 @@ client.indices.exists({
         scroll: "1m"
     });
 
-    while( r.hits.hits.length > 0 ){
-        for( let hit of r.hits.hits ){
-            if( !hit._source ) continue;
+    while (r.hits.hits.length > 0) {
+        for (let hit of r.hits.hits) {
+            if (!hit._source) continue;
             let update: PartialJurisprudenciaDocument = {};
-            for( let key of JurisprudenciaDocumentGenericKeys ){
+            for (let key of JurisprudenciaDocumentGenericKeys) {
                 let v = hit._source[key];
-                if(!hit._source.Original) continue;
+                if (!hit._source.Original) continue;
                 let oKey = keyToOriginal(key);
-                if(!oKey) continue;
+                if (!oKey) continue;
                 let oValue = []
-                if( typeof oKey === "string" ){
+                if (typeof oKey === "string") {
                     oValue = new JSDOM(hit._source.Original[oKey]).window.document.body.textContent?.split("\n").map(t => t.trim()).filter(t => t.length > 0) || [];
                 }
-                else{
+                else {
                     oValue = oKey.map(k => new JSDOM(hit._source!.Original![k]).window.document.body.textContent?.trim() || "");
                 }
-                
+
                 update[key] = {
                     Original: oValue,
                     Index: v?.Index || [],
@@ -80,7 +81,7 @@ client.indices.exists({
             }
             await bup.update(hit._id, update)
         }
-        r = await client.scroll({scroll: "2m", scroll_id: r._scroll_id});
+        r = await client.scroll({ scroll: "2m", scroll_id: r._scroll_id });
     }
 
     await bup.close()
