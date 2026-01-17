@@ -58,7 +58,7 @@ client.indices.exists({
 
     while (r.hits.hits.length > 0) {
         for (let hit of r.hits.hits) {
-            if (!hit._source) continue;
+            if (!hit._source || !hit._id) continue;
             let update: PartialJurisprudenciaDocument = {};
             for (let key of JurisprudenciaDocumentGenericKeys) {
                 let v = hit._source[key];
