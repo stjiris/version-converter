@@ -86,4 +86,4 @@ async function reindexWithUuid(batchSize = 500) {
     console.log("Migration finished. Total indexed:", totalIndexed);
 }
 
-reindexWithUuid();
+reindexWithUuid(100);
