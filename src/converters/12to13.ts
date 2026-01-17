@@ -1,8 +1,7 @@
-// migrate-with-uuid.ts
-import { client } from "../util/client"; // your ES client
-import { waitTask } from "../util/wait-task"; // if you still need it (not used here)
+import { client } from "../util/client";
+import { waitTask } from "../util/wait-task";
 import { JurisprudenciaVersion as JurisprudenciaVersion12 } from "jurisprudencia-document-12";
-import { calculateHASH, calculateUUID, JurisprudenciaVersion as JurisprudenciaVersion13 } from "jurisprudencia-document-13";
+import { calculateHASH, calculateUUID, JurisprudenciaDocument, JurisprudenciaVersion as JurisprudenciaVersion13 } from "jurisprudencia-document-13";
 
 async function reindexWithUuid(batchSize = 500) {
     const [existsSrc, existsDst] = await Promise.all([
@@ -13,7 +12,12 @@ async function reindexWithUuid(batchSize = 500) {
         throw new Error(`Both indices must exist. src:${JurisprudenciaVersion12}=${existsSrc} dst:${JurisprudenciaVersion13}=${existsDst}`);
     }
 
-    const resp = await client.search({ index: JurisprudenciaVersion12, scroll: "2m", size: batchSize, body: { query: { match_all: {} } } });
+    const resp = await client.search({
+        index: JurisprudenciaVersion12,
+        scroll: "2m",
+        size: batchSize,
+        body: { query: { match_all: {} } }
+    });
 
     let scrollId: string | undefined = (resp as any)._scroll_id || resp._scroll_id;
     let hits = (resp as any).hits?.hits || [];
@@ -26,19 +30,20 @@ async function reindexWithUuid(batchSize = 500) {
         const bulkOps: any[] = [];
 
         for (const hit of hits) {
-            const src = hit._source || {};
+            const src: JurisprudenciaDocument = hit._source || {};
+
             const docForHash = {
-                Original: src.Original ?? "",
+                Original: src.Original ?? {},
                 "Número de Processo": src["Número de Processo"] ?? "",
                 Data: src.Data ?? "",
-                "Meio Processual": src["Meio Processual"] ?? "",
+                "Meio Processual": src["Meio Processual"] ?? { Original: [], Index: [], Show: [] },
             };
 
             const hash = calculateHASH(docForHash);
             const uuid = calculateUUID(hash);
 
-            src.uuid = uuid;
-            src._hash = hash;
+            src.UUID = uuid;
+            src.HASH = hash;
 
             bulkOps.push({ index: { _index: JurisprudenciaVersion13, _id: uuid } });
             bulkOps.push(src);
@@ -72,9 +77,12 @@ async function reindexWithUuid(batchSize = 500) {
         try {
             await client.clearScroll({ scroll_id: scrollId });
         } catch (err) {
+            // Ignore errors clearing scroll
         }
     }
 
     await client.indices.refresh({ index: JurisprudenciaVersion13 });
     console.log("Migration finished. Total indexed:", totalIndexed);
 }
+
+export { reindexWithUuid };

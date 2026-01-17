@@ -4,7 +4,7 @@ import { BulkUpdate } from "../util/bulk";
 
 client.indices.exists({
     index: JurisprudenciaVersion
-}).then(async exists => {
+}).then(async (exists: any) => {
     if (!exists) throw new Error(`Indice: "${JurisprudenciaVersion}" doesn't exist`);
 
     let bup = new BulkUpdate<JurisprudenciaDocument>(client, JurisprudenciaVersion);
@@ -63,5 +63,5 @@ function isHTMLEmpty(texts: string[]) {
         char_filter: ["html_strip"],
         filter: ["trim"],
         text: texts
-    }).then(r => r.tokens ? r.tokens.every(t => t.token.length === 0) : false)
+    }).then((r: { tokens: any[]; }) => r.tokens ? r.tokens.every(t => t.token.length === 0) : false)
 }
