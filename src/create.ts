@@ -44,7 +44,7 @@ async function main() {
     let v = await getVersion(versions[0]);
     if (!v) return await showHelp(1, `ERROR: Unable to use index "${versions[0]}"\n`);
     let version = v;
-    client.indices.exists({ index: version.JurisprudenciaVersion }).then(async exists => {
+    client.indices.exists({ index: version.JurisprudenciaVersion }).then(async (exists: any) => {
         if (exists && !DELETE_INDEX) {
             process.stdout.write(`Index "${version.JurisprudenciaVersion}" already exists.\n`)
             let stats = await client.indices.stats({ index: version.JurisprudenciaVersion });
@@ -93,7 +93,7 @@ async function main() {
             }
         })
         process.stdout.write(`Created ${r.index} with result: ${r.acknowledged}.\n`);
-    }).catch(e => showHelp(2, `ERROR: ${e.name}\n`))
+    }).catch((e: { name: any; }) => showHelp(2, `ERROR: ${e.name}\n`))
 
 }
 
