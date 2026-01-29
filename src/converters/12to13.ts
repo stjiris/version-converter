@@ -1,5 +1,4 @@
 import { client } from "../util/client";
-import { waitTask } from "../util/wait-task";
 import { JurisprudenciaVersion as JurisprudenciaVersion12 } from "jurisprudencia-document-12";
 import { calculateHASH, calculateUUID, JurisprudenciaDocument, JurisprudenciaVersion as JurisprudenciaVersion13 } from "jurisprudencia-document-13";
 
