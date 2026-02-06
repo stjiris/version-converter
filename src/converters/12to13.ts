@@ -38,8 +38,9 @@ async function reindexWithUuid(batchSize = 500) {
                 Data: src.Data,
                 "Meio Processual": src["Meio Processual"],
                 Texto: src.Texto,
+                "Texto Não Anonimizado": src.Texto,
                 Sumário: src.Sumário,
-                STATE: src.STATE
+                "Sumário Não Anonimizado": src.Sumário,
             };
 
             const hash = calculateHASH(docForHash);
