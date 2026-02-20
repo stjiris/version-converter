@@ -32,15 +32,16 @@ async function reindexWithUuid(batchSize = 500) {
             const src: JurisprudenciaDocument = hit._source || {};
             if (!src)
                 continue;
+
             const docForHash = {
                 Original: src.Original,
                 "Número de Processo": src["Número de Processo"],
                 Data: src.Data,
                 "Meio Processual": src["Meio Processual"],
                 Texto: src.Texto,
-                "Texto Não Anonimizado": src.Texto,
+                "Texto Não Anonimizado": src["Texto Não Anonimizado"],
                 Sumário: src.Sumário,
-                "Sumário Não Anonimizado": src.Sumário,
+                "Sumário Não Anonimizado": src["Sumário Não Anonimizado"],
             };
 
             const hash = calculateHASH(docForHash);
