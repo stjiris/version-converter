@@ -68,14 +68,9 @@ function parseCsv(text: string): string[][] {
     return rows;
 }
 
-// Per field, the reviewed raw->canonical decisions, indexed twice:
-//   exact  - the raw value exactly as the extract read it out of `<Field>.Original`
-//   folded - the same value under foldValue (accents/case/whitespace/edge punctuation)
-// The second index exists because the CSV makes a round trip through a spreadsheet
-// during the manual review, and spreadsheets strip leading/trailing spaces from a
-// cell. That silently turned rows like " - NEGADA A REVISTA" into "- NEGADA A REVISTA",
-// which an exact lookup then misses, leaving the document with its raw text. Exact
-// still wins, so a deliberate decision on a whitespace-significant value is preserved.
+// field -> reviewed raw->canonical decisions, indexed exactly and folded. The folded
+// index covers the spreadsheet round trip of the manual review, which strips leading
+// and trailing spaces from the raw column. Exact wins.
 type FieldTable = { exact: Map<string, string>; folded: Map<string, string> };
 type Mapping = Map<string, FieldTable>;
 
@@ -107,8 +102,7 @@ function loadMapping(path: string): Mapping {
         const folded = foldValue(raw);
         if (folded === "") continue;                 // e.g. "/" - nothing left to key on
         const seen = bucket.folded.get(folded);
-        // Two rows that fold together but were reviewed differently: keep the first and
-        // report it, rather than let insertion order decide silently.
+        // rows that fold together but were reviewed differently: keep the first, report it
         if (seen !== undefined && seen !== canonical) conflicts.push(`${field}: "${raw}" -> "${canonical}" conflicts with "${seen}" (same folded form)`);
         else bucket.folded.set(folded, canonical);
     }
@@ -186,13 +180,18 @@ async function apply(mappingPath: string, dryRun: boolean, batchSize = 500) {
             const docPatch: Record<string, GenericField> = {};
             for (const field of ControlledFields) {
                 const gf = src[field] as GenericField | undefined;
-                if (!gf || !Array.isArray(gf.Original) || gf.Original.length === 0) continue;
+                if (!gf) continue;
+                const original = Array.isArray(gf.Original) ? gf.Original : [];
+                // Legacy records curated straight into Show/Index, with no Original recorded:
+                // resolve those from Show. Original stays empty.
+                const source = original.length > 0 ? original : (Array.isArray(gf.Show) ? gf.Show : []);
+                if (source.length === 0) continue;
                 const table = mapping.get(field)!;
-                const resolved = gf.Original.map(v => resolve(field, v, table, stats[field]));
+                const resolved = source.map(v => resolve(field, v, table, stats[field]));
                 const show = resolved.map(r => r.show);
                 const index = resolved.map(r => r.index);
                 if (!(sameArr(gf.Show, show) && sameArr(gf.Index, index))) {
-                    docPatch[field] = { Original: gf.Original, Show: show, Index: index };
+                    docPatch[field] = { Original: original, Show: show, Index: index };
                 }
             }
             if (Object.keys(docPatch).length > 0) {
