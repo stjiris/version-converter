@@ -20,7 +20,7 @@ Decisão,PROVIDO EM PARTE,440,0,0.34,Conceder provimento parcialmente,0,rule
 Decisão,CONCEDIDA PARCIALMENTE,415,0,0.63,Conceder provimento parcialmente,0,rule
 Decisão,RECLAMAÇÃO INDEFERIDA,367,0,0.41,Indeferir,0,rule
 Decisão,REJEITADO O RECURSO,339,0,0.42,Rejeitar,0,rule
-Decisão,INDEFERIDA A RECLAMAÇÃO.,312,0,0.39,Deferir,0,rule
+Decisão,INDEFERIDA A RECLAMAÇÃO.,312,0,0.39,Indeferir,0,rule
 Decisão,INDEFERIDO,279,0,0.80,Indeferir,0,rule
 Decisão,NEGADA REVISTA,260,0,0.50,Negar provimento,0,rule
 Decisão,REJEITADO,258,0,0.78,Rejeitar,0,rule
@@ -168,7 +168,7 @@ Decisão,NEGADA REVISTA.,15,0,0.50,Negar provimento,0,rule
 Decisão,Provido parcialmente,15,0,0.59,Conceder provimento parcialmente,0,rule
 Decisão,ALTERADA A ESPÉCIE DE RECURSO.,14,0,0.21,Sem informação,0,rule
 Decisão,CONFIRMADO,14,0,0.80,Confirmar,0,rule
-Decisão,DESATENDIDA A RECLAMAÇÃO,14,0,0.38,Sem informação,0,rule
+Decisão,DESATENDIDA A RECLAMAÇÃO,14,0,0.38,Indeferir,0,rule
 Decisão,INDEFERIDO A RECLAMAÇÃO,14,0,0.39,Indeferir,0,rule
 Decisão,NEGADAS AS REVISTAS.,14,0,0.37,Negar provimento,0,rule
 Decisão,NÃO ADMITIDA A REVISTA.,14,0,0.50,Não admitir,0,rule
@@ -350,7 +350,7 @@ Decisão,REJEITADA A REVISTA,5,0,0.45,Rejeitar,0,rule
 Decisão,REJEITADO POR INADMISSIBILIDADE,5,0,0.29,Rejeitar,0,rule
 Decisão,REVISTA PARCIALMENTE CONCEDIDA,5,0,0.47,Conceder provimento parcialmente,0,rule
 Decisão,ACLARADO O ACORDÃO.,4,0,0.30,Sem informação,0,rule
-Decisão,ALTERADA A DECISÃO,4,0,0.30,Sem informação,0,rule
+Decisão,ALTERADA A DECISÃO,4,0,0.30,Conceder provimento parcialmente,0,rule
 Decisão,ALTERADA A INCRIMINAÇÃO.,4,0,0.39,Sem informação,0,rule
 Decisão,ANULADA A DECISÃO RECORRIDA.,4,0,0.33,Anular,0,rule
 Decisão,ANULADA A DECISÃO. DECIDIDO NÃO TOMAR CONHECIMENTO.,4,0,0.28,Anular,1,rule:multi-part
@@ -483,7 +483,7 @@ Decisão,NEGDA A REVISTA,3,0,0.44,Negar provimento,0,rule
 Decisão,NÃO ADMISSÃO DO RECURSO,3,0,0.39,Não admitir,0,rule
 Decisão,NÃO ADMITIDO,3,0,0.83,Não admitir,0,rule
 Decisão,NÃO AUTORIZADA A REVISTA.,3,0,0.29,Negar provimento,0,rule
-Decisão,NÃO CONCEDIDA A REVISTA,3,0,0.39,Conceder provimento,0,rule
+Decisão,NÃO CONCEDIDA A REVISTA,3,0,0.39,Negar provimento,0,rule
 Decisão,NÃO CONHECER DO RECURSO.,3,0,0.52,Não conhecer,0,rule
 Decisão,ORDENADA A BAIXA DO PROCESSO À RELAÇÃO.,3,0,0.47,Ordenar baixa dos autos,0,rule
 Decisão,ORDENADA A BAIXA DO PROCESSO. ANULADO O JULGAMENTO.,3,0,0.40,Anular,1,rule:multi-part
@@ -505,7 +505,7 @@ Decisão,RECLAMAÇÃO DEFERIDA PARCIALMENTE,3,0,0.44,Deferir,0,rule
 Decisão,REENVIADO PARA NOVO JULGAMENTO,3,0,0.40,Ordenar baixa dos autos,0,rule
 Decisão,REGEITADO O RECURSO.,3,0,0.37,Rejeitar,0,rule
 Decisão,REJEITADA A ADMISSÃO,3,0,0.36,Rejeitar,0,rule
-Decisão,REJEITADO O RECURSO EXTRAORDINÁRIO PARA FIXAÇÃO DE JURISPRUDÊNCIA,3,0,0.29,Fixar jurisprudência,0,rule
+Decisão,REJEITADO O RECURSO EXTRAORDINÁRIO PARA FIXAÇÃO DE JURISPRUDÊNCIA,3,0,0.29,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO. PROVIDO PARCIAL.,3,0,0.31,Conceder provimento parcialmente,1,rule:multi-part
 Decisão,REJEITADO RECURSO.,3,0,0.47,Rejeitar,0,rule
 Decisão,REMESSA DOS AUTOS AO TRIBUNAL RECORRIDO,3,0,0.33,Remeter os autos,0,rule
@@ -724,7 +724,7 @@ Decisão,NEGAÇÃO DA REVISTA,2,0,0.39,Negar provimento,0,rule
 Decisão,Negar a revista,2,0,0.56,Negar provimento,0,rule
 Decisão,NÃO ADMITIDA,2,0,0.83,Não admitir,0,rule
 Decisão,NÃO ADMITIDA A RECLAMAÇÃO,2,0,0.44,Não admitir,0,rule
-Decisão,NÃO ADMITIDO O RECURSO PARA UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,2,0,0.31,Fixar jurisprudência,0,rule
+Decisão,NÃO ADMITIDO O RECURSO PARA UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,2,0,0.31,Não admitir,0,rule
 Decisão,NÃO ADMITIR A REVISTA EXCEPCIONAL,2,0,0.33,Não admitir,0,rule
 Decisão,NÃO ADMITIR O RECURSO,2,0,0.52,Não admitir,0,rule
 Decisão,NÃO CONHECER DO PEDIDO DE HABEAS CORPUS,2,0,0.31,Não conhecer,0,rule
@@ -1141,7 +1141,7 @@ Decisão,ATRIBUÍDA A COMPETENCIA AO TRIBUNAL DE S.JOÃO DA MADEIRA,1,0,0.27,Sem
 Decisão,ATRIBUÍDA A COMPETÊNCIA AO 1.º JUÍZO CRIMINAL DO TRIBUNAL JUDICIAL DE GUIMARÃES,1,0,0.23,Sem informação,1,fallback:unparsed
 Decisão,ATRIBUÍDA A COMPETÊNCIA AO JUIZ ESCUSANTE DE GONDOMAR,1,0,0.26,Sem informação,1,fallback:unparsed
 Decisão,ATRIBUÍDA A COMPETÊNCIA AO JUÍZO DE INSTRUÇÃO CRIMINAL DE LISBOA,1,0,0.27,Sem informação,1,fallback:unparsed
-Decisão,ATRIBUÍDA A COMPETÊNCIA AO TRIBUNAL DE PEQUENA INSTÂNCIA CRIMINAL,1,0,0.29,Sem informação,1,fallback:unparsed
+Decisão,ATRIBUÍDA A COMPETÊNCIA AO TRIBUNAL DE PEQUENA INSTÂNCIA CRIMINAL,1,0,0.29,Declarar competência,1,fallback:unparsed
 Decisão,ATRIBUÍDA A COMPETÊNCIA TERRITORIAL AO JUÍZO DE COMPETÊNCIA GENÉRICA DE CINFÃES,1,0,0.24,Sem informação,1,fallback:unparsed
 Decisão,ATRIBUÍDA A COMPETÊNCIA TERRITORIAL AO JUÍZO LOCAL CRIMINAL DE SANTA MARIA DA FEIRA – JUIZ 2.,1,0,0.21,Sem informação,1,fallback:unparsed
 Decisão,ATRIBUÍDA COMPETÊNCIA AO TIC DE LISBOA,1,0,0.32,Sem informação,1,fallback:unparsed
@@ -1159,7 +1159,7 @@ Decisão,AUTORIZAR A REVISÃO,1,0,0.32,Sem informação,1,fallback:unparsed
 Decisão,AUTORIZAR A REVISÃO REQUERIDA E O REENVIO DO PROCESSO À 1ª INSTÂNCIA.,1,0,0.28,Ordenar baixa dos autos,0,rule
 Decisão,Admitida,1,0,0.75,Admitir,0,rule
 Decisão,Admitida a Revista e Concedida a Revista,1,0,0.28,Admitir,0,rule
-Decisão,Alterada a decisão,1,0,0.30,Sem informação,0,rule
+Decisão,Alterada a decisão,1,0,0.30,Conceder provimento parcialmente,0,rule
 Decisão,Anulada a decisão da Relação para ampliação,1,0,0.28,Anular,0,rule
 Decisão,"Anulado em parte o acórdão por excesso de pronúncia e, no demais, negada a revista",1,0,0.21,Sem informação,0,rule
 Decisão,Anulado o acórdão e determinada a baixa do recurso,1,0,0.32,Anular,0,rule
@@ -1355,7 +1355,7 @@ Decisão,CONCEDIDA A REVISTA INDEPENDENTE DA RÉ E NEGADA A REVISTA SUBORDINADA 
 Decisão,CONCEDIDA A REVISTA INTERPOSTA PELO ESTADO E CONCEDIDA PARCIALMENTE A REVISTA DOS AUTORES,1,0,0.29,Conceder provimento parcialmente,0,rule
 Decisão,"CONCEDIDA A REVISTA INTERPOSTA POR ""DD""",1,0,0.34,Conceder provimento,0,rule
 Decisão,CONCEDIDA A REVISTA INTERPOSTO PELO AUTOR,1,0,0.37,Conceder provimento,0,rule
-Decisão,CONCEDIDA A REVISTA PRINCIPAL E NEGADA A REVISTA SUBORDINADA,1,0,0.30,Negar provimento,0,rule
+Decisão,CONCEDIDA A REVISTA PRINCIPAL E NEGADA A REVISTA SUBORDINADA,1,0,0.30,Conceder provimento parcialmente,0,rule
 Decisão,CONCEDIDA A REVISTA PRINCIPAL E NEGADA A SUBORDINADA,1,0,0.33,Negar provimento,0,rule
 Decisão,CONCEDIDA A REVISTA PRINCIPAL. NÃO CONHECIDA A REVISTA SUBORDINADA,1,0,0.29,Conceder provimento,1,rule:multi-part
 Decisão,CONCEDIDA A REVISTA PROVIMENTO PARCIAL DA AMPLIAÇÃO DO OBJETO DE RECURSO,1,0,0.40,Conceder provimento parcialmente,0,rule
@@ -1658,7 +1658,7 @@ Decisão,"Concedida a Revista, anulando o Acórdão por omissão de pronúncia",
 Decisão,"Concedida a Revista, determinando-se o prosseguimento dos autos",1,0,0.30,Prosseguir os autos,0,rule
 Decisão,"Concedida a Revista, recusando-se a aplicação da norma extraída do artigo 1842º, n.º1, alínea c), do CC, por inconstitucionalidade e, por consequência, declarando-se improcedente a exceção de caducidade da acção de impugnação de presunção de paternidade e determinando-se o prosseguimento dos autos",1,0,0.10,Conceder provimento,1,rule:multi-part
 Decisão,"Concedida a Revista, repristinando-se a decisão da 1ª intância",1,0,0.31,Conceder provimento,0,rule
-Decisão,Concedida a revista e anulado o acórdão recorrido,1,0,0.35,Conceder provimento,0,rule
+Decisão,Concedida a revista e anulado o acórdão recorrido,1,0,0.35,Anular,0,rule
 Decisão,Concedida a revista e devolvidos autos à Relação paea apreciação,1,0,0.28,Conceder provimento,0,rule
 Decisão,Concedida a revista em parte,1,0,0.43,Conceder provimento parcialmente,0,rule
 Decisão,Concedida a revista em parte e anulado o acórdão na restante,1,0,0.37,Conceder provimento parcialmente,0,rule
@@ -1899,8 +1899,8 @@ Decisão,EXTINÇÃO DO PROCESSO. DECIDIDO NÃO TOMAR CONHECIMENTO.,1,0,0.32,Julg
 Decisão,EXTINÇÃO NO PROCESSO.,1,0,0.35,Julgar extinta a instância,0,rule
 Decisão,FERREIRA DE SOUSA,1,0,0.36,Sem informação,1,fallback:unparsed
 Decisão,FERREIRA LOPES,1,0,0.32,Sem informação,1,fallback:unparsed
-Decisão,FINDO O RECURSO POR NAÕ EXISTIR OPOSIÇÃO.,1,0,0.25,Sem informação,0,rule
-Decisão,FINDO O RECURSO POR NÂO EXISTIR OPOSIÇÂO.,1,0,0.25,Sem informação,0,rule
+Decisão,FINDO O RECURSO POR NAÕ EXISTIR OPOSIÇÃO.,1,0,0.25,Rejeitar,0,rule
+Decisão,FINDO O RECURSO POR NÂO EXISTIR OPOSIÇÂO.,1,0,0.25,Rejeitar,0,rule
 Decisão,FIXADA A JURISPRUDÊNCIA.,1,0,0.83,Fixar jurisprudência,0,rule
 Decisão,FIXADA A SEGUINTE JURISPRUDÊNCIA.,1,0,0.59,Sem informação,1,fallback:unparsed
 Decisão,FIXADA DE JURISPRUDENCIA,1,0,0.79,Fixar jurisprudência,0,rule
@@ -1963,7 +1963,7 @@ Decisão,INDEFERE-SE A RECLAMAÇÃO,1,0,0.33,Indeferir,0,rule
 Decisão,"INDEFERE-SE A RECLAMAÇÃO, MANMTENDO-SE A DECISÃO DO",1,0,0.27,Indeferir,0,rule
 Decisão,INDEFERE-SE A RECLAMAÇÃO.,1,0,0.33,Indeferir,0,rule
 Decisão,"INDEFERE-SE, IGUALMENTE, O PEDIDO DE CONDENAÇÃO DA RECLAMANTE COMO LITIGANTE DE MÁ FÉ.",1,0,0.22,Indeferir,0,rule
-Decisão,INDEFERIDA A  RECLAMAÇÃO,1,0,0.39,Deferir,0,rule
+Decisão,INDEFERIDA A  RECLAMAÇÃO,1,0,0.39,Indeferir,0,rule
 Decisão,INDEFERIDA A ADMISSIBILIDADE DA REVISTA,1,0,0.26,Indeferir,0,rule
 Decisão,"INDEFERIDA A ARGUIDA NULIDADE DO ACÓRDÃO RECORRIDO. NO MAIS, CONCEDIDA A REVISTA.",1,0,0.20,Indeferir,1,rule:multi-part
 Decisão,INDEFERIDA A ARGUIÇÃO DAS NULIDADES.,1,0,0.37,Indeferir,0,rule
@@ -2260,7 +2260,7 @@ Decisão,MANDADO AMPLIAR A MATÉRIA DE FACTO.,1,0,0.29,Ordenar baixa dos autos,0
 Decisão,MANDADO APLICAR A JURISPRUDÊNCIA DO AUJ Nº 15/2016,1,0,0.36,Sem informação,1,fallback:unparsed
 Decisão,MANTER O DESPACHO DO RELATOR,1,0,0.29,Sem informação,1,fallback:unparsed
 Decisão,MANTER O DESPACHO RECLAMADO,1,0,0.28,Sem informação,1,fallback:unparsed
-Decisão,MANTIDA A DECISÃO LIMINAR DO RELATOR QUE NÃO ADMITIU O RECURSO PARA UNIFORMIZAÇÃO DA JURISPRUDÊNCIA,1,0,0.19,Fixar jurisprudência,0,rule
+Decisão,MANTIDA A DECISÃO LIMINAR DO RELATOR QUE NÃO ADMITIU O RECURSO PARA UNIFORMIZAÇÃO DA JURISPRUDÊNCIA,1,0,0.19,Não admitir,0,rule
 Decisão,MANTIDA A RECISÃO RECORRIDA,1,0,0.30,Sem informação,1,fallback:unparsed
 Decisão,MANTIDO O ACÓRDÃO RECORRIDO/ NEGADO PROVIMENTO AO RECURSO INTERPOSTO,1,0,0.32,Negar provimento,0,rule
 Decisão,MANTIDO O DESPACHO DO RELATOR E NÃO ADMITIDO O RECURSO.,1,0,0.22,Não admitir,0,rule
@@ -2711,8 +2711,8 @@ Decisão,NÃO ADMITIDA EM PARTE A REVISTA PRINCIPAL. CONCEDIDA PROVIMENTO PARCIA
 Decisão,NÃO ADMITIDA O RECURSO DE REVISTA EXCEPCIONAL.,1,0,0.24,Não admitir,0,rule
 Decisão,NÃO ADMITIDO E RECURSO,1,0,0.50,Não admitir,0,rule
 Decisão,NÃO ADMITIDO O RECURSO DE REVISTA,1,0,0.33,Não admitir,0,rule
-Decisão,NÃO ADMITIDO O RECURSO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,1,0,0.32,Fixar jurisprudência,0,rule
-Decisão,NÃO ADMITIDO O RECURSO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA.,1,0,0.32,Fixar jurisprudência,0,rule
+Decisão,NÃO ADMITIDO O RECURSO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,1,0,0.32,Não admitir,0,rule
+Decisão,NÃO ADMITIDO O RECURSO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA.,1,0,0.32,Não admitir,0,rule
 Decisão,NÃO ADMITIDO O RECURSO E INDEFERIDA A RECLAMAÇÃO,1,0,0.25,Não admitir,0,rule
 Decisão,NÃO ADMITIDO O RECURSO POR INEXISTÊNCIA DE PRESSUPOSTOS,1,0,0.25,Não admitir,0,rule
 Decisão,NÃO ADMITIDO O RECURSO À ARGUIDA CC.,1,0,0.31,Não admitir,0,rule
@@ -2722,7 +2722,7 @@ Decisão,NÃO ADMITIDO O RECURSO. REMETIDO À FORMAÇÃO,1,0,0.28,Não admitir,1
 Decisão,NÃO ADMITIR O CONHECIMENTO DO OBJECTO DO RECURSO.,1,0,0.27,Não admitir,0,rule
 Decisão,NÃO ADMITIR O RECURSO DE REVISTA EXCEPCIONAL.,1,0,0.25,Não admitir,0,rule
 Decisão,NÃO ADMITIR O RECURSO DE REVISTA GERAL E REMESSA À FORMAÇÃO,1,0,0.22,Não admitir,0,rule
-Decisão,NÃO ADMITIR O RECURSO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA INTERPOSTO.,1,0,0.27,Fixar jurisprudência,0,rule
+Decisão,NÃO ADMITIR O RECURSO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA INTERPOSTO.,1,0,0.27,Não admitir,0,rule
 Decisão,NÃO ADMITIR O RECURSO EXTRAORDINÁRIO DE JURISPRUDÊNCIA,1,0,0.35,Não admitir,0,rule
 Decisão,NÃO AUTORIZADA,1,0,0.43,Negar provimento,0,rule
 Decisão,NÃO AUTORIZADA A REVISÃO DA SENTENÇA,1,0,0.42,Negar provimento,0,rule
@@ -2730,8 +2730,8 @@ Decisão,NÃO AUTORIZADA A REVISÃO DE SENTENÇA,1,0,0.39,Negar provimento,0,rul
 Decisão,NÃO AUTORIZADA A REVISÃO. ORDENADA A BAIXA DO PROCESSO.,1,0,0.30,Negar provimento,1,rule:multi-part
 Decisão,NÃO AUTORIZADA A SENTENÇA,1,0,0.56,Negar provimento,0,rule
 Decisão,NÃO CABIMENTO PARCIAL DO OBJETO DO RECURSO E REVISTA IMPROCEDENTE NA PARTE CONHECIDA,1,0,0.24,Negar provimento,0,rule
-Decisão,NÃO CONCEDIDA,1,0,0.62,Conceder provimento,0,rule
-Decisão,NÃO CONCEDIDA  A REVISTA,1,0,0.39,Conceder provimento,0,rule
+Decisão,NÃO CONCEDIDA,1,0,0.62,Negar provimento,0,rule
+Decisão,NÃO CONCEDIDA  A REVISTA,1,0,0.39,Negar provimento,0,rule
 Decisão,NÃO CONCEDIDA A REVISTA QUANTO À MÁ FÉ. NEGADA QUANTO AO MAIS,1,0,0.30,Conceder provimento parcialmente,1,rule:multi-part
 Decisão,NÃO CONHCIMENTO DO OBJETO DO RECURSO,1,0,0.31,Sem informação,1,fallback:unparsed
 Decisão,NÃO CONHECE OBJECTO DO RECURSO,1,0,0.40,Não conhecer,0,rule
@@ -2826,9 +2826,9 @@ Decisão,NÃO RECEBIDO O RECURSO,1,0,0.41,Não admitir,0,rule
 Decisão,NÃO RECONHECER O OBJECTO DO RECURSO,1,0,0.34,Sem informação,1,fallback:unparsed
 Decisão,NÃO RECONHECIMENTO DO OBJETO DE RECURSO,1,0,0.31,Sem informação,1,fallback:unparsed
 Decisão,NÃO SE ADMITE A REVISTA,1,0,0.43,Não admitir,0,rule
-Decisão,NÃO SE ADMITE O RECURSO DA UNIFORMIZAÇÃO DE JURISPRUDÊNCIA.,1,0,0.31,Fixar jurisprudência,0,rule
+Decisão,NÃO SE ADMITE O RECURSO DA UNIFORMIZAÇÃO DE JURISPRUDÊNCIA.,1,0,0.31,Não admitir,0,rule
 Decisão,NÃO SE ADMITE O RECURSO DE REVISTA,1,0,0.29,Não admitir,0,rule
-Decisão,NÃO SE ADMITE O RECURSO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,1,0,0.31,Fixar jurisprudência,0,rule
+Decisão,NÃO SE ADMITE O RECURSO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,1,0,0.31,Não admitir,0,rule
 Decisão,NÃO SE ADMITEM OS RECURSOS,1,0,0.42,Não admitir,0,rule
 Decisão,NÃO SE CONHECE DA REVISTA NORMAL. REMETE À FORMAÇÃO PARA APRECIAÇÃO DOS PRESSUPOSTOS DA REVISTA EXCEPCIONAL E INDEFERE A RECLAMAÇÃO QUANTO AO EFEITO DO RECURSO.,1,0,0.16,Não conhecer,1,rule:multi-part
 Decisão,NÃO SE CONHECE DA REVISTA NORMAL.DEVOLUÇÃO DOS AUTOS À FORMAÇÃO PARA AFERIR DOS PROSSUPOSTOS DA EXISTÊNCIA DA REVISTA EXCEPCIONAL,1,0,0.17,Não conhecer,1,rule:multi-part
@@ -2864,7 +2864,7 @@ Decisão,NÃO TOMAR CONHECIMENTO DO OBJECTO DO RECURSO,1,0,0.27,Não conhecer,0,
 Decisão,NÃO TOMAR CONHECIMENTO DO OBJETO DO RECURSO,1,0,0.28,Não conhecer,0,rule
 Decisão,NÃO TOMOU CONHECIMENTO DE PARTES DAS REVISTAS. NEGADA A REVISTA NO RESTANTE.,1,0,0.28,Não conhecer,1,rule:multi-part
 Decisão,NÃO TOMOU CONHECIMENTO DO RECURSO,1,0,0.36,Não conhecer,0,rule
-Decisão,NÃOI ADMITIDA A REVISTA EXCECIONAL,1,0,0.32,Admitir,0,rule
+Decisão,NÃOI ADMITIDA A REVISTA EXCECIONAL,1,0,0.32,Não admitir,0,rule
 Decisão,Não Fixada jurisprudência,1,0,0.76,Fixar jurisprudência,0,rule
 Decisão,Não admitida a revista,1,0,0.50,Não admitir,0,rule
 Decisão,Não admitido o recurso de revista independente e prejudicado o conhecimento do recurso subordinado,1,0,0.20,Não admitir,0,rule
@@ -3115,7 +3115,7 @@ Decisão,"RECONHECER LEGITIMIDADE AO MINISTÉRIO PÚBLICO PARA EMITIR PARECER NE
 Decisão,RECONHECIDA A OPOSIÇÃO DE JULGADOS,1,0,0.32,Sem informação,1,fallback:unparsed
 Decisão,RECTIFICADA A DECISÃO.,1,0,0.36,Sem informação,1,fallback:unparsed
 Decisão,RECTIFICADO O ACÓRDÃO,1,0,0.33,Sem informação,1,fallback:unparsed
-Decisão,RECTIFICADO O LAPSO MATERIAL E INDEFERIDA A RECLAMAÇÃO.,1,0,0.26,Deferir,0,rule
+Decisão,RECTIFICADO O LAPSO MATERIAL E INDEFERIDA A RECLAMAÇÃO.,1,0,0.26,Indeferir,0,rule
 Decisão,RECURSO ADMITIDO.,1,0,0.50,Sem informação,1,fallback:unparsed
 Decisão,RECURSO CIVIL REJEITADO,1,0,0.30,Rejeitar,0,rule
 Decisão,RECURSO CRIMINAL PARCIALMENTE PROCEDENTE,1,0,0.40,Conceder provimento parcialmente,0,rule
@@ -3184,7 +3184,7 @@ Decisão,REJEITADO LIMINARMENTE O RECURSO,1,0,0.28,Rejeitar,0,rule
 Decisão,REJEITADO NA PARTE CRIMINAL E JULGADO PARCIALMENTE QUANTO AO CIVEL,1,0,0.32,Rejeitar,0,rule
 Decisão,REJEITADO O PEDIDO DE REFORMA,1,0,0.28,Rejeitar,0,rule
 Decisão,REJEITADO O PEDIDO DE REVISÃO,1,0,0.28,Rejeitar,0,rule
-Decisão,REJEITADO O PEDIDO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,1,0,0.34,Fixar jurisprudência,0,rule
+Decisão,REJEITADO O PEDIDO DE UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,1,0,0.34,Rejeitar,0,rule
 Decisão,REJEITADO O PROVIMENTO E O RECURSO,1,0,0.38,Rejeitar,0,rule
 Decisão,REJEITADO O RCURSO,1,0,0.44,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO A UNS E REJEITADO PARCIALMENTE O RECURSO A OUTROS,1,0,0.29,Rejeitar,0,rule
@@ -3205,14 +3205,14 @@ Decisão,REJEITADO O RECURSO E PROVIDO PARCIALMENTE OUTRO,1,0,0.42,Rejeitar,0,ru
 Decisão,REJEITADO O RECURSO EM MATÉRIA PENAL,1,0,0.25,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO EXTRAORDINÁRIO,1,0,0.29,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO EXTRAORDINÁRIO DE DECISÃO PROFERIDA CONTRA JURISPRUDÊNCIA FIXADA,1,0,0.23,Rejeitar,0,rule
-Decisão,REJEITADO O RECURSO EXTRAORDINÁRIO DE FIXAÇÃO DE JURISPRUDÊNCIA,1,0,0.30,Fixar jurisprudência,0,rule
+Decisão,REJEITADO O RECURSO EXTRAORDINÁRIO DE FIXAÇÃO DE JURISPRUDÊNCIA,1,0,0.30,Rejeitar,0,rule
 Decisão,"REJEITADO O RECURSO EXTRAORDINÁRIO, CONVOLADO EM RECURSO ORDINÁRIO PARA O TRIBUNAL DA RELAÇÃO DE ...",1,0,0.21,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO FALTA OPOS. JULGADOS,1,0,0.32,Rejeitar,1,rule:multi-part
 Decisão,REJEITADO O RECURSO INDEPENDENTE PREJUDICADA A APRECIAÇÃO DO RECURSO SUBORDINADO.,1,0,0.21,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO INTERLUCUTÓRIO DA ARGUIDA E O RECURSO QUE INTERPÔS DA DECISÃO FINAL NA PARTE RELATIVA À CONDENAÇÃO PELOS CRIMES DE DETENÇÃO DE ARMA PROIBIDA E DE PROFANAÇÃO DO CADÁVER.,1,0,0.13,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO INTERPOSTO POR IRRECORRIBILIDADE DA DECISÃO IMPUGNADA,1,0,0.22,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO INTERPOSTO QUANTO À DECISÃO INTERLOCUTÓRIA. NEGADO PROVIMENTO AO DEMAIS.,1,0,0.22,Negar provimento,1,rule:multi-part
-Decisão,REJEITADO O RECURSO PARA UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,1,0,0.32,Fixar jurisprudência,0,rule
+Decisão,REJEITADO O RECURSO PARA UNIFORMIZAÇÃO DE JURISPRUDÊNCIA,1,0,0.32,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO PENAL E JULGADO IMPROCEDENTE O RECURSO CÍVEL DO MESMO ARGUIDO. PROVIDO EM PARTE O RECURSO DO MINISTÉRIO PÚBLICO.,1,0,0.18,Conceder provimento parcialmente,1,rule:multi-part
 Decisão,REJEITADO O RECURSO PENAL E PROVIDO PARCIALMENTE O CÍVEL,1,0,0.36,Rejeitar,0,rule
 Decisão,REJEITADO O RECURSO POR DUPLA CONFORME E NEGADO PROVIMENTO NO RESTANTE,1,0,0.27,Rejeitar,0,rule
@@ -3257,12 +3257,12 @@ Decisão,REJEITADOS OS RECURSOS DE CC E BB (ESTES DOIS PARCIALMENTE); CONCEDIDO 
 Decisão,"REJEITADOS OS RECURSOS DOS ARGUIDOS AA  E BB  E CONCEDIDO PROVIMENTO AO RECURSO DA CAIXA ECONÓMICA M. G., ANULANDO-SE O ACÓRDÃO EXCLUSIVAMENTE QUANTO AO PEDIDO CÍVEL",1,0,0.17,Rejeitar,1,rule:multi-part
 Decisão,REJEITADOS OS RECURSOS DOS ARGUIDOS AA E BB. PROVIDO O DO ARGUIDO DD,1,0,0.21,Rejeitar,1,rule:multi-part
 Decisão,REJEITADOS OS RECURSOS DOS ARGUIDOS BB E CC; ANULADA A DECISÃO RECORRIDA QUANTO AO ARGUIDO AA.,1,0,0.18,Anular,0,rule
-Decisão,REJEITADOS OS RECURSOS EXTRAORDINÁRIOS PARA FIXAÇÃO DE JURISPRUDÊNCIA,1,0,0.28,Fixar jurisprudência,0,rule
+Decisão,REJEITADOS OS RECURSOS EXTRAORDINÁRIOS PARA FIXAÇÃO DE JURISPRUDÊNCIA,1,0,0.28,Rejeitar,0,rule
 Decisão,"REJEITADOS OS RECURSOS INTERPOSTOS PELAS RECORRENTES FF, QQ E LL; REJEITADO O RECURSO DO ARGUIDO AA, NO QUE TOCA ÀS QUESTÕES RELATIVAS ÀS CONDENAÇÕES NAS PENAS PARCELARES; NO MAIS, JULGADO IMPROCEDENTE O RECURSO.",1,0,0.13,Rejeitar,0,rule
 Decisão,"REJEITADOS OS RECURSOS INTERPOSTOS POR TODOS OS RECORRENTES, NO QUE RESPEITA À APRECIAÇÃO DA MATÉRIA DE FACTO; REJEITADOS OS RECURSOS INTERPOSTOS PELOS RECORRENTES QUANTO À MEDIDA DAS PENAS PARCELARES, RELATIVAS AOS CRIMES DE EXTORSÃO, NA FORMA TENTADA; E, NEGADO PROVIMENTO AOS RECURSOS, NA PARTE RESTANTE.",1,0,0.09,Rejeitar,0,rule
 Decisão,"REJEITADOS TOTALMENTE OS RECURSOS DOS ARGUIDOS HH, GG E PP E PARCIALMENTE OS DEMAIS E NEGADO PROVIMENTO QUANTO AOS RESTANTES",1,0,0.19,Rejeitar,0,rule
 Decisão,REJEITAR O RECURSO,1,0,0.44,Rejeitar,0,rule
-Decisão,"REJEITAR, POR INADMISSIBILIDADE, O RECURSO EXTRAORDINÁRIO PARA FIXAÇÃO DE JURISPRUDÊNCIA",1,0,0.22,Fixar jurisprudência,0,rule
+Decisão,"REJEITAR, POR INADMISSIBILIDADE, O RECURSO EXTRAORDINÁRIO PARA FIXAÇÃO DE JURISPRUDÊNCIA",1,0,0.22,Rejeitar,0,rule
 Decisão,REJEIÇÃO DA REVISTA EXCEPCIONAL,1,0,0.32,Rejeitar,0,rule
 Decisão,REJEIÇÃO DE RECURSO,1,0,0.37,Rejeitar,0,rule
 Decisão,REJEIÇÃO DO RECURSO,1,0,0.37,Rejeitar,0,rule
@@ -3405,7 +3405,7 @@ Decisão,Rejeitada,1,0,0.78,Rejeitar,0,rule
 Decisão,Rejeitada a Reclamação,1,0,0.41,Rejeitar,0,rule
 Decisão,Rejeitada a admissão da Revista,1,0,0.29,Rejeitar,0,rule
 Decisão,Rejeitada a revista,1,0,0.45,Rejeitar,0,rule
-Decisão,Rejeitado a admissão do recurso,1,0,0.32,Admitir,0,rule
+Decisão,Rejeitado a admissão do recurso,1,0,0.32,Não admitir,0,rule
 Decisão,Rejeitado o Recurso do arguido DD; Julgados improcedentes os outros dois.,1,0,0.22,Rejeitar,0,rule
 Decisão,Rejeitado o pedido de reforma,1,0,0.28,Rejeitar,0,rule
 Decisão,Rejeitado o recurso de revista da Autora. Concedida parcialmente a revista da Ré,1,0,0.28,Conceder provimento parcialmente,1,rule:multi-part
@@ -4110,7 +4110,7 @@ Decisão,FIXAR JURISPRUDÊNCIA,1,1,1.00,Fixar jurisprudência,1,fallback:unparse
 Decisão,NEGAO PROVIMENTO,1,1,0.94,Conceder provimento,0,rule
 Decisão,ORDENAR A BAIXA DOS AUTOS,1,1,0.92,Ordenar baixa dos autos,0,rule
 Meio Processual,HABEAS CORPUS,1341,1,1.00,Habeas corpus,0,rule
-Meio Processual,RECURSO DE REVISÃO,654,1,0.89,Recurso de revista,0,rule
+Meio Processual,RECURSO DE REVISÃO,654,1,0.89,Recurso extraordinário de revisão,0,rule
 Meio Processual,EXTRADIÇÃO,212,1,1.00,Extradição,0,rule
 Meio Processual,CONFLITO JURISDIÇÃO,172,1,0.86,Conflito de jurisdição,0,rule
 Meio Processual,CONFLITO COMPETÊNCIA,130,1,0.87,Conflito de competência,0,rule
@@ -4150,10 +4150,10 @@ Meio Processual,MANADADO DE DETENÇÃO EUROPEU,1,1,0.96,Mandado de detenção eu
 Meio Processual,MANDADO DE DENTENÇÃO EUROPEU,1,1,0.96,Mandado de detenção europeu,1,fallback:no-home
 Meio Processual,MANDATO DE DETENÇÃO EUROPEU,1,1,0.96,Mandado de detenção europeu,0,rule
 Meio Processual,RECLAMAÇÃO PARA A CNFERÊNCIA,1,1,0.97,Outro,1,fallback:no-home
-Meio Processual,RECURSO DE REVISAO,1,1,0.89,Recurso de revista,0,rule
+Meio Processual,RECURSO DE REVISAO,1,1,0.89,Recurso extraordinário de revisão,0,rule
 Meio Processual,RECURSO DE REVISTA EXCECIONAL,1,1,1.00,Recurso de revista excecional,0,rule
 Meio Processual,RECURSO DE REVISTA EXCEPCIONAL,1,1,0.97,Recurso de revista excecional,0,rule
-Meio Processual,RECURSO DE REVISÂO,1,1,0.89,Recurso de revista,0,rule
+Meio Processual,RECURSO DE REVISÂO,1,1,0.89,Recurso extraordinário de revisão,0,rule
 Meio Processual,RECURSO EXTRAORDNÁRIO DE REVISÃO,1,1,0.97,Recurso extraordinário de revisão,1,fallback:no-home
 Meio Processual,REENVIO PREJUDICIAL,1,1,1.00,Reenvio prejudicial,0,rule
 Meio Processual,REVISÃO DE SENTENÇA ESTRANGEIRA,1,1,1.00,Revisão de sentença estrangeira,0,rule
@@ -5314,3 +5314,14 @@ Votação,POR MAIORIA,1,1,1.00,Maioria simples,0,rule
 Votação,UNANIMIDADE COM * DEC VOT,1,1,1.00,Unanimidade,1,rule
 Votação,VOTO DE VENCIDO E VOTO DE DESEMPATE,1,1,1.00,Desempate,1,rule
 Votação,VOTO VENCIDO COM VOTO DE DESEMPATE,1,1,1.00,Desempate,1,rule
+Decisão,"B) ESTABELECER A SEGUINTE UNIFORMIZAÇÃO: ""O PEDIDO DE INDEMNIZAÇÃO CÍVEL DEDUZIDO EM ACÇÃO POPULAR, FUNDADO NUMA CAUSA DE PEDIR QUE SEJA INTEGRADA POR FACTOS QUALIFICADOS COMO CRIME, NÃO ESTÁ SUBMETIDO AO PRINCÍPIO DA ADESÃO PREVISTO NO ART. 71.º DO CPP.""",1,0,0.00,Fixar jurisprudência,1,added manually: value not present at extract time
+Decisão,CONCDIDA,1,0,0.00,Conceder provimento,1,added manually: value not present at extract time
+Decisão,IMPROCEDENTE A AÇÃO EXECUTIVA,1,0,0.00,Negar provimento,1,added manually: value not present at extract time
+Decisão,JULGAMNETO ANULADO,1,0,0.00,Anular,1,added manually: value not present at extract time
+Decisão,"O CUMPRIMENTO DA PENA ACESSÓRIA DE PROIBIÇÃO DE CONDUZIR VEÍCULOS COM MOTOR, PREVISTA NO ART. 69.º, N.º 1, DO CP, SÓ PODE INICIAR-SE COM O TRÂNSITO EM JULGADO DA DECISÃO QUE A APLICOU, NOS TERMOS DO SEU N.º 2, NÃO HAVENDO LUGAR A DESCONTO, NO CÔMPUTO DA PENA, DO PERÍODO DECORRIDO ENTRE A ENTREGA VOLUNTÁRIA DO TÍTULO HABILITANTE E O REFERIDO TRÂNSITO.",1,0,0.00,Fixar jurisprudência,1,added manually: value not present at extract time
+Decisão,REVISTA PROCEDENTE EM ANULAÇÃO DO ACÓRDÃO PARA AMPLIAÇÃO DA MATÉRIA DE FACTO,1,0,0.00,Anular,1,added manually: value not present at extract time
+Meio Processual,EXECUÇÃO DE SENTENÇA DE ANULAÇÃO DE ATOS ADMINISTRATIVOS,1,0,0.00,Outro,1,added manually: value not present at extract time
+Meio Processual,RECLAMAÇÃO – ARTIGO 643.º CPC,1,0,0.00,Reclamação art. 643.º CPC,1,added manually: value not present at extract time
+Meio Processual,RECONHECIMENTO SETENÇA ESTRANGEIRA,1,0,0.00,Revisão de sentença estrangeira,1,added manually: value not present at extract time
+Meio Processual,REVISTA ( MARÍTIMO ),1,0,0.00,Recurso de revista,1,added manually: value not present at extract time
+Meio Processual,Sumário,1,0,0.00,Outro,1,added manually: value not present at extract time

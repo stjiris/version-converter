@@ -26,6 +26,7 @@ import {
     ControlledFields,
     VotacaoCategories,
     matchCanonical,
+    foldValue,
     parseVotacao,
     formatVotacaoShow,
     GenericField,
@@ -67,8 +68,20 @@ function parseCsv(text: string): string[][] {
     return rows;
 }
 
-// field -> (exact raw Original value -> corrected canonical value)
-type Mapping = Map<string, Map<string, string>>;
+// Per field, the reviewed raw->canonical decisions, indexed twice:
+//   exact  - the raw value exactly as the extract read it out of `<Field>.Original`
+//   folded - the same value under foldValue (accents/case/whitespace/edge punctuation)
+// The second index exists because the CSV makes a round trip through a spreadsheet
+// during the manual review, and spreadsheets strip leading/trailing spaces from a
+// cell. That silently turned rows like " - NEGADA A REVISTA" into "- NEGADA A REVISTA",
+// which an exact lookup then misses, leaving the document with its raw text. Exact
+// still wins, so a deliberate decision on a whitespace-significant value is preserved.
+type FieldTable = { exact: Map<string, string>; folded: Map<string, string> };
+type Mapping = Map<string, FieldTable>;
+
+function lookup(table: FieldTable, raw: string): string | undefined {
+    return table.exact.get(raw) ?? table.folded.get(foldValue(raw));
+}
 
 function loadMapping(path: string): Mapping {
     const rows = parseCsv(readFileSync(path, "utf8")).filter(r => r.some(c => c.trim() !== ""));
@@ -80,8 +93,9 @@ function loadMapping(path: string): Mapping {
     if (iField < 0 || iRaw < 0 || iCanon < 0) {
         throw new Error(`${path} must have 'field', 'raw' and 'canonical' columns (got: ${header.join(", ")}).`);
     }
-    const map: Mapping = new Map(ControlledFields.map(f => [f, new Map<string, string>()]));
+    const map: Mapping = new Map(ControlledFields.map(f => [f, { exact: new Map(), folded: new Map() }]));
     let skipped = 0;
+    const conflicts: string[] = [];
     for (const r of rows.slice(1)) {
         const field = (r[iField] ?? "").trim();
         const raw = r[iRaw] ?? "";
@@ -89,10 +103,21 @@ function loadMapping(path: string): Mapping {
         const bucket = map.get(field);
         if (!bucket) { skipped++; continue; }       // unknown field column
         if (canonical === "") continue;              // left blank -> no mapping, fall back at apply time
-        bucket.set(raw, canonical);
+        bucket.exact.set(raw, canonical);
+        const folded = foldValue(raw);
+        if (folded === "") continue;                 // e.g. "/" - nothing left to key on
+        const seen = bucket.folded.get(folded);
+        // Two rows that fold together but were reviewed differently: keep the first and
+        // report it, rather than let insertion order decide silently.
+        if (seen !== undefined && seen !== canonical) conflicts.push(`${field}: "${raw}" -> "${canonical}" conflicts with "${seen}" (same folded form)`);
+        else bucket.folded.set(folded, canonical);
     }
     if (skipped) console.warn(`Ignored ${skipped} rows with an unrecognized field.`);
-    for (const f of ControlledFields) console.log(`  ${f}: ${map.get(f)!.size} mapped raw values`);
+    if (conflicts.length) {
+        console.warn(`${conflicts.length} folded-form conflicts (first wins):`);
+        for (const c of conflicts) console.warn(`  ${c}`);
+    }
+    for (const f of ControlledFields) console.log(`  ${f}: ${map.get(f)!.exact.size} mapped raw values`);
     return map;
 }
 
@@ -100,8 +125,8 @@ type Stats = { fromTable: number; fallback: number };
 
 // Resolve one raw Original value to its { show, index } for a field, preferring
 // the reviewed table and falling back to the shared fuzzy logic.
-function resolve(field: typeof ControlledFields[number], raw: string, table: Map<string, string>, stats: Stats): { show: string; index: string } {
-    const mapped = table.get(raw);
+function resolve(field: typeof ControlledFields[number], raw: string, table: FieldTable, stats: Stats): { show: string; index: string } {
+    const mapped = lookup(table, raw);
     if (field === "Votação") {
         const p = parseVotacao(raw);
         if (mapped !== undefined) {
