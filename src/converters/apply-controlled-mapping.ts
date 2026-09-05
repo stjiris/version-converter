@@ -37,6 +37,14 @@ import {
 // specific index, e.g. the live prod data: INDEX=jurisprudencia.12.0
 const INDEX = process.env.INDEX || JurisprudenciaVersion;
 
+// no match anywhere -> use the field's catch-all instead of keeping the raw value
+const CONTROLLED_FALLBACK: Partial<Record<typeof ControlledFields[number], string>> = {
+    "Decisão": "Sem informação",
+    "Meio Processual": "Outro",
+    "Relator Nome Profissional": "Sem informação",
+    "Votação": "Sem informação",
+};
+
 // --- minimal RFC-4180 CSV parser (quoted fields, embedded commas/quotes/newlines) ---
 function parseCsv(text: string): string[][] {
     const rows: string[][] = [];
@@ -130,14 +138,16 @@ function resolve(field: typeof ControlledFields[number], raw: string, table: Fie
             return { show, index: mapped };
         }
         stats.fallback++;
-        return { show: p.show, index: p.matched ? p.category : p.show };
+        if (p.matched) return { show: p.show, index: p.category };
+        return { show: "Sem informação", index: "Sem informação" };
     }
     if (mapped !== undefined) {
         stats.fromTable++;
         return { show: mapped, index: mapped };
     }
     stats.fallback++;
-    const v = matchCanonical(field, raw).value;
+    const m = matchCanonical(field, raw);
+    const v = m.matched ? m.value : (CONTROLLED_FALLBACK[field] ?? m.value);
     return { show: v, index: v };
 }
 
