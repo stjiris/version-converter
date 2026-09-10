@@ -31,6 +31,7 @@ import {
     formatVotacaoShow,
     GenericField,
     VotacaoCategory,
+    collapseMeioProcessual,
 } from "jurisprudencia-document-13";
 
 // Index to write. Defaults to the package's current version; set INDEX to target a
@@ -198,8 +199,14 @@ async function apply(mappingPath: string, dryRun: boolean, batchSize = 500) {
                 if (source.length === 0) continue;
                 const table = mapping.get(field)!;
                 const resolved = source.map(v => resolve(field, v, table, stats[field]));
-                const show = resolved.map(r => r.show);
-                const index = resolved.map(r => r.index);
+                let show = resolved.map(r => r.show);
+                let index = resolved.map(r => r.index);
+                // Meio Processual: strip the "Outro" markers (separator tokens +
+                // unmatched values) and collapse to "Sem informação" when empty.
+                if (field === "Meio Processual") {
+                    show = collapseMeioProcessual(show);
+                    index = collapseMeioProcessual(index);
+                }
                 if (!(sameArr(gf.Show, show) && sameArr(gf.Index, index))) {
                     docPatch[field] = { Original: original, Show: show, Index: index };
                 }
